@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Admin Dashboard | BabalSharma.Studio</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <main class="shell" style="margin:24px auto;">
+    <div class="header-row">
+      <div>
+        <div class="eyebrow">Dashboard</div>
+        <h2 style="margin-top:10px;">BabalSharma.Studio Admin</h2>
+        <p style="margin:0;">Manage services, orders, and client records from one control panel.</p>
+      </div>
+      <div class="actions-row">
+        <a class="button" href="site-editor.html">Site Editor</a>
+        <a class="button" href="../index.html">View Site</a>
+        <button id="logoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+
+    <div class="stats-grid admin-stats">
+      <div class="panel stat-box"><span>Total Services</span><strong id="totalServices">0</strong></div>
+      <div class="panel stat-box"><span>Total Orders</span><strong id="totalOrders">0</strong></div>
+      <div class="panel stat-box"><span>Pending Orders</span><strong id="pendingOrders">0</strong></div>
+      <div class="panel stat-box"><span>Clients</span><strong id="totalClients">0</strong></div>
+    </div>
+
+    <div class="grid admin-grid-2">
+      <section class="panel">
+        <div class="eyebrow">Create / Update Service</div>
+        <h2>Service Editor</h2>
+        <form id="serviceForm" class="stack">
+          <input type="hidden" id="serviceId">
+          <input type="text" id="serviceCategory" placeholder="Category" required>
+          <input type="text" id="serviceName" placeholder="Service name" required>
+          <textarea id="serviceDescription" rows="4" placeholder="Description"></textarea>
+          <input type="url" id="serviceImageUrl" placeholder="Image URL">
+          <input type="number" id="serviceOldPrice" placeholder="Old price">
+          <input type="number" id="serviceOfferPrice" placeholder="Offer price" required>
+          <input type="number" id="serviceAdvancePercent" placeholder="Advance percent" value="50">
+          <input type="number" id="serviceDeliveryHours" placeholder="Delivery hours" value="24">
+          <select id="serviceStatus">
+            <option value="Active">Active</option>
+            <option value="Hidden">Hidden</option>
+          </select>
+          <div class="actions-row">
+            <button type="submit">Save Service</button>
+            <button type="button" id="resetServiceBtn">Reset</button>
+          </div>
+          <div id="serviceFormMessage" class="note"></div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="eyebrow">Bulk Upload</div>
+        <h2>Import service catalog</h2>
+        <p>Upload a CSV with category, name, description, image URL, price, old price, advance percentage, delivery hours, and status.</p>
+        <div class="stack">
+          <input type="file" id="csvInput" accept=".csv">
+          <div id="uploadStatus" style="display:none;"><span id="uploadText">Uploading...</span></div>
+        </div>
+        <div class="note">Required CSV order: category, name, description, imageUrl, oldPrice, offerPrice, priceUnit, advancePercent, deliveryHours, status</div>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-top:24px;">
+      <div class="eyebrow">Service Catalog</div>
+      <h2>All services</h2>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Offer Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="servicesTableBody">
+            <tr><td colspan="5">Loading services...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:24px;">
+      <div class="eyebrow">Orders</div>
+      <h2>Recent orders</h2>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Client</th>
+              <th>Service</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody">
+            <tr><td colspan="7">Loading orders...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:24px;">
+      <div class="eyebrow">Clients</div>
+      <h2>Registered clients</h2>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Joined</th>
+            </tr>
+          </thead>
+          <tbody id="clientsTableBody">
+            <tr><td colspan="4">Loading clients...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+<script type="module" src="js/admindashboard.js"></script>
+<script type="module" src="js/bulkupload.js"></script>
+</body>
+</html>

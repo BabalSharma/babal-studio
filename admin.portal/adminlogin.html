@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Admin Login | BabalSharma.Studio</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="body-centered">
+  <main class="shell">
+    <div class="login-layout">
+      <section class="panel">
+        <div class="eyebrow">Admin Control</div>
+        <h1>Production admin access.</h1>
+        <p>This route controls real Firestore data. Only accounts listed in the <strong>admins</strong> collection should be allowed into the dashboard.</p>
+        <ul>
+          <li>Manage services with full create, update, and delete actions</li>
+          <li>Track order statuses and payment state</li>
+          <li>See client accounts and catalog growth</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <div class="eyebrow">Secure Sign In</div>
+        <h2>Admin Login</h2>
+        <form id="adminLoginForm">
+          <input type="email" id="email" placeholder="Admin email" required>
+          <input type="password" id="password" placeholder="Password" required>
+          <button type="submit" id="loginBtn">Login</button>
+          <p id="error"></p>
+          <div class="note">Admin setup: create a Firestore document in <strong>admins/{uid}</strong> after creating the admin user account.</div>
+          <a href="../index.html" class="button">Back to website</a>
+        </form>
+      </section>
+    </div>
+  </main>
+<script type="module" src="js/adminlogin.js"></script>
+</body>
+</html>

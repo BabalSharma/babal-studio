@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Content Studio | BabalSharma.Studio</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    .builder-grid{display:grid;grid-template-columns:420px minmax(0,1fr);gap:24px;align-items:start}
+    .stack{display:grid;gap:14px}
+    .editor-form label{display:grid;gap:8px;font-size:14px;font-weight:600}
+    .editor-form input,.editor-form textarea,.editor-form select{width:100%;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:inherit}
+    .preview-frame{width:100%;min-height:760px;border:0;border-radius:22px;background:#fff}
+    .section-list,.item-list,.collection-list{display:grid;gap:12px}
+    .section-item,.item-card,.collection-card{padding:14px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+    .section-item.active,.item-card.active,.collection-card.active{outline:2px solid rgba(0,113,227,.45)}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .small-btn{padding:8px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:inherit}
+    .builder-shell{display:grid;gap:20px}
+    .muted{opacity:.76}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+    .pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);font-size:12px}
+    .note code{white-space:nowrap}
+    .inline-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .collection-card img,.thumb-preview{width:100%;max-height:180px;object-fit:cover;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05)}
+    .collection-card h4{margin:10px 0 4px}
+    .collection-card p{margin:0;color:rgba(255,255,255,.78);font-size:14px}
+    .manager-tabs{display:flex;gap:10px;flex-wrap:wrap}
+    .manager-tab{padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);cursor:pointer}
+    .manager-tab.active{background:rgba(0,113,227,.18);border-color:rgba(0,113,227,.32)}
+    .hidden{display:none!important}
+    .upload-note{font-size:12px;opacity:.72;margin-top:4px}
+    @media (max-width:1080px){.builder-grid{grid-template-columns:1fr}.preview-frame{min-height:560px}.three-col,.two-col{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="shell" style="margin:24px auto;">
+    <div class="header-row">
+      <div>
+        <div class="eyebrow">Content Studio</div>
+        <h2 style="margin-top:10px;">Hidden visual builder + monetization content studio</h2>
+        <p style="margin:0;">Edit global styling, page sections, blog posts, app cards, and game cards from one admin editor.</p>
+      </div>
+      <div class="actions-row">
+        <a class="button" href="admindashboard.html">Dashboard</a>
+        <a class="button" href="../index.html" target="_blank" rel="noopener">Open Site</a>
+      </div>
+    </div>
+
+    <div class="builder-grid">
+      <section class="panel builder-shell">
+        <div class="panel editor-form" style="margin:0;">
+          <div class="row" style="justify-content:space-between;align-items:center;">
+            <h3 style="margin:0;">Global theme</h3>
+            <span class="pill">Applies to all pages</span>
+          </div>
+          <form id="themeForm" class="stack" style="margin-top:14px;">
+            <label>Brand name <input id="brandName" type="text"></label>
+            <div class="two-col">
+              <label>Accent color <input id="accentColor" type="color"></label>
+              <label>Accent dark color <input id="accentStrong" type="color"></label>
+            </div>
+            <div class="two-col">
+              <label>Background 1 <input id="bgColor" type="color"></label>
+              <label>Background 2 <input id="bgColor2" type="color"></label>
+            </div>
+            <label>Glass strength
+              <select id="glassLevel">
+                <option value="soft">Soft</option>
+                <option value="medium">Medium</option>
+                <option value="strong">Strong</option>
+              </select>
+            </label>
+          </form>
+        </div>
+
+        <div class="panel editor-form" style="margin:0;">
+          <div class="row" style="justify-content:space-between;align-items:center;">
+            <h3 style="margin:0;">Page selector</h3>
+            <span class="pill" id="pageFilePill">index.html</span>
+          </div>
+          <label style="margin-top:14px;">Edit page
+            <select id="pageSelect">
+              <option value="home">Homepage</option>
+              <option value="blogs">Blog page</option>
+              <option value="apps">Apps page</option>
+              <option value="games">Games page</option>
+            </select>
+          </label>
+          <div class="three-col" style="margin-top:14px;">
+            <label>Hero eyebrow <input id="heroEyebrow" type="text"></label>
+            <label>Hero title <input id="heroTitle" type="text"></label>
+            <label>Hero accent line <input id="heroAccent" type="text"></label>
+          </div>
+          <label>Hero description <textarea id="heroDescription" rows="3"></textarea></label>
+        </div>
+
+        <div class="panel" style="margin:0;">
+          <div class="row" style="justify-content:space-between;align-items:center;">
+            <div>
+              <h3 style="margin:0 0 6px;">Page sections</h3>
+              <p class="muted" style="margin:0;">Add, reorder, remove, and edit blocks for the selected page.</p>
+            </div>
+            <select id="newSectionType" style="max-width:180px;">
+              <option value="showcase">Showcase</option>
+              <option value="features">Cards</option>
+              <option value="quicklinks">Quick links</option>
+              <option value="articles">Articles</option>
+              <option value="progress">Progress</option>
+              <option value="split">Split</option>
+              <option value="testimonials">Testimonials</option>
+              <option value="faq">FAQ</option>
+              <option value="contact">Contact</option>
+              <option value="cta">CTA</option>
+            </select>
+            <button type="button" class="small-btn" id="addSectionBtn">Add section</button>
+          </div>
+          <div id="sectionList" class="section-list" style="margin-top:16px;"></div>
+        </div>
+
+        <div class="panel editor-form" style="margin:0;">
+          <div class="row" style="justify-content:space-between;align-items:center;">
+            <div>
+              <h3 style="margin:0 0 6px;">Selected section editor</h3>
+              <p class="muted" style="margin:0;">Use the fields below to edit the active block.</p>
+            </div>
+            <span class="pill" id="sectionTypePill">No section selected</span>
+          </div>
+          <form id="sectionForm" class="stack" style="margin-top:16px;"></form>
+          <div id="itemEditorWrap" class="stack" style="margin-top:18px;"></div>
+        </div>
+
+        <div class="panel editor-form" style="margin:0;">
+          <div class="row" style="justify-content:space-between;align-items:center;">
+            <div>
+              <h3 style="margin:0 0 6px;">Content manager</h3>
+              <p class="muted" style="margin:0;">Create real blog posts and app/game cards with image upload fields.</p>
+            </div>
+            <span class="pill">Visual CMS</span>
+          </div>
+          <div class="manager-tabs" style="margin-top:14px;">
+            <button type="button" class="manager-tab active" data-manager="blogs">Blog posts</button>
+            <button type="button" class="manager-tab" data-manager="apps">App cards</button>
+            <button type="button" class="manager-tab" data-manager="games">Game cards</button>
+          </div>
+          <div class="row" style="margin-top:14px; justify-content:space-between; align-items:center;">
+            <h4 id="managerTitle" style="margin:0;">Blog posts</h4>
+            <button type="button" class="small-btn" id="addCollectionItemBtn">Add new item</button>
+          </div>
+          <div id="collectionList" class="collection-list" style="margin-top:14px;"></div>
+          <form id="collectionForm" class="stack" style="margin-top:16px;"></form>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" id="saveBtn">Save all changes</button>
+          <button type="button" id="previewBtn">Refresh preview</button>
+          <button type="button" id="resetBtn">Reset defaults</button>
+        </div>
+        <div id="editorMessage" class="note">Saved settings apply in this browser using local storage.</div>
+        <div class="note">Hidden admin login path: <code>admin.portal/adminlogin.html</code>. Secret shortcut on public pages: type <code>admin</code>.</div>
+      </section>
+
+      <section class="panel">
+        <div class="eyebrow">Live Preview</div>
+        <h2>Selected page preview</h2>
+        <iframe title="Page preview" class="preview-frame" id="previewFrame" src="../index.html"></iframe>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="js/site-editor.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Order & Pay | Babaldeep Sharma</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Place and save a real service order with BabalSharma Studio.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a class="logo-container" href="index.html" aria-label="Go to homepage">
+      <img src="images/logo.png" alt="Babaldeep Sharma Logo" width="42" height="42" decoding="async" />
+      <span data-site-text="brandName">BabalSharma.Studio</span>
+    </a>
+    <div class="nav-links" aria-label="Primary links">
+      <a href="index.html">Home</a>
+      <a href="product.html">Services</a>
+      <a href="blogs.html">Blog</a>
+      <a href="games.html">Games</a>
+      <a href="apps.html">Apps</a>
+      <a href="certificate.html">Certificates</a>
+      <a href="login.html">Client Login</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-utility-group"></div>
+      <div class="dropdown">
+        <button class="drop-btn" id="dropBtn" aria-label="Open Menu" aria-expanded="false" aria-controls="dropdownMenu">☰</button>
+        <div class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html">Home</a>
+        <a href="product.html">Services</a>
+        <a href="blogs.html">Blog</a>
+        <a href="games.html">Games</a>
+        <a href="apps.html">Apps</a>
+        <a href="certificate.html">Certificates</a>
+        <a href="login.html">Client Login</a>
+        <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero reveal">
+  <div class="eyebrow">Order Flow</div>
+  <h1>Real order saving.<br><span class="text-accent">Protected client workflow.</span></h1>
+  <p>Select a service, review pricing, then save your project order directly into Firestore. Client login is required for production use.</p>
+</section>
+
+<div class="container reveal">
+  <div class="order-layout">
+    <div>
+      <h2 class="section-title">Place Your Order</h2>
+      <p class="section-intro">Choose your service and fill in the project details. Pricing updates automatically and the order is saved to your client account.</p>
+      <div id="orderAuthNotice" class="auth-message info" style="margin-bottom:18px;">Checking login status...</div>
+
+      <form id="orderForm">
+        <label for="serviceSelect">Select Service</label>
+        <select id="serviceSelect" required>
+          <option value="">-- Choose a Service --</option>
+        </select>
+
+        <label>Price (INR)</label>
+        <div id="priceDisplay">
+          <span id="oldPrice" class="old-price"></span>
+          <span id="offerPrice" class="new-price"></span>
+          <span id="discountBadge" class="discount-badge"></span>
+        </div>
+
+        <label for="discount">Discount (%)</label>
+        <input type="number" id="discount" value="0" min="0" max="100" readonly>
+
+        <label for="priceAfterDiscount">Price After Discount</label>
+        <input type="text" id="priceAfterDiscount" readonly>
+
+        <label for="advance">Advance Required (INR)</label>
+        <input type="text" id="advance" readonly>
+
+        <label for="delivery">Delivery Time</label>
+        <input type="text" id="delivery" readonly>
+
+        <label class="rush-label" for="rushDelivery">
+          <span>Need delivery earlier? Extra 30% charges apply.</span>
+          <input type="checkbox" id="rushDelivery">
+        </label>
+
+        <label class="terms-label" for="termsCheckbox">
+          <span>I agree to the <a href="terms.html">Terms & Conditions</a> and <a href="privacy.html">Privacy Policy</a></span>
+          <input type="checkbox" id="termsCheckbox" required>
+        </label>
+
+        <label for="couponCode">Coupon Code</label>
+        <input type="text" id="couponCode" placeholder="Enter coupon code">
+
+        <div class="actions-row" style="justify-content:flex-start; margin-top:-4px;">
+          <button type="button" id="applyCouponBtn" class="btn">Apply Coupon</button>
+        </div>
+        <p id="couponMessage"></p>
+
+        <label for="name">Your Name</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" required>
+
+        <label for="details">Additional Details</label>
+        <textarea id="details" rows="4" placeholder="Extra info / instructions"></textarea>
+
+        <div class="actions-row" style="justify-content:flex-start; margin-top:0;">
+          <button type="button" id="payBtn" class="btn">Save Order & Continue</button>
+        </div>
+      </form>
+
+      <div class="success-message" id="successMessage" style="display:none;">
+        Your order has been submitted successfully.
+      </div>
+    </div>
+
+    <aside class="order-summary reveal is-visible">
+      <small class="meta-pill">Summary</small>
+      <h3>What happens next</h3>
+      <p>Once you save the order, it becomes visible in your client dashboard and in the admin control panel for project management.</p>
+      <ul>
+        <li><span>Service selected</span><strong id="summaryService">—</strong></li>
+        <li><span>Current total</span><strong id="summaryTotal">—</strong></li>
+        <li><span>Advance due</span><strong id="summaryAdvance">—</strong></li>
+        <li><span>Delivery time</span><strong id="summaryDelivery">—</strong></li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Babaldeep Sharma</p>
+  <div class="actions-row" style="margin-top:14px; justify-content:center;">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
+
+<script src="js/site-config.js"></script>
+<script src="js/script.js"></script>
+<script type="module" src="js/order.js"></script>
+</body>
+</html>

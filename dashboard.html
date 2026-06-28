@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard | BabalSharma.Studio</title>
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Track your project orders and profile in the BabalSharma.Studio client dashboard.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <nav class="navbar is-scrolled" role="navigation" aria-label="Main navigation">
+    <a class="logo-container" href="index.html" aria-label="Go to homepage">
+      <img src="images/logo.png" alt="Babaldeep Sharma Logo" width="42" height="42" decoding="async" />
+      <span data-site-text="brandName">BabalSharma.Studio</span>
+    </a>
+    <div class="actions-row">
+      <a href="product.html" class="btn-outline">Services</a>
+      <button id="clientLogoutBtn" class="btn" type="button">Logout</button>
+    </div>
+  </nav>
+</header>
+
+<main class="container dashboard-shell reveal is-visible">
+  <section class="page-hero" style="padding-bottom:24px;">
+    <div class="eyebrow">Client Dashboard</div>
+    <h1>Your projects.<br><span class="text-accent">Organized in one place.</span></h1>
+    <p>See your profile, recent orders, and current order statuses. This dashboard is connected to your Firebase account and Firestore orders collection.</p>
+  </section>
+
+  <div class="dashboard-grid">
+    <section class="card dashboard-profile">
+      <small class="meta-pill">Profile</small>
+      <h2 id="clientName">Loading...</h2>
+      <p id="clientEmail">—</p>
+      <p id="clientPhone">—</p>
+      <div class="actions-row" style="justify-content:flex-start; margin-top:18px;">
+        <a href="order.html" class="btn">Create New Order</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <small class="meta-pill">Stats</small>
+      <div class="stats-grid">
+        <div><span>Total Orders</span><strong id="statOrders">0</strong></div>
+        <div><span>In Progress</span><strong id="statProgress">0</strong></div>
+        <div><span>Completed</span><strong id="statCompleted">0</strong></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="card" style="margin-top:24px;">
+    <div class="header-row">
+      <div>
+        <small class="meta-pill">Orders</small>
+        <h2 style="margin-top:10px;">Recent project orders</h2>
+      </div>
+      <a href="order.html" class="btn-secondary">New Order</a>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Service</th>
+            <th>Total</th>
+            <th>Advance</th>
+            <th>Status</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody id="clientOrdersBody">
+          <tr><td colspan="6">Loading your orders...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="js/site-config.js"></script>
+<script src="js/script.js"></script>
+<script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

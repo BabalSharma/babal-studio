@@ -1,0 +1,169 @@
+/* ================================
+   BabalSharma.Studio Admin Login
+   ================================ */
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ROOT VARIABLES */
+:root {
+  --primary: #764ba2;
+  --secondary: #667eea;
+  --white: #ffffff;
+  --glass: rgba(255, 255, 255, 0.15);
+  --blur: blur(14px);
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  --radius: 16px;
+  --text-light: #f1f1f1;
+  --danger: #ffdddd;
+}
+
+/* BODY */
+body {
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--secondary),
+    var(--primary)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* LOGIN CONTAINER */
+.login-box {
+  width: 360px;
+  padding: 40px 35px;
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+/* BRAND TITLE */
+.login-box h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.login-box h2 span {
+  color: #ffd6ff;
+}
+
+/* SUBTITLE */
+.login-box p {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+/* INPUT FIELDS */
+.login-box input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* INPUT FOCUS */
+.login-box input:focus {
+  outline: 2px solid #ffffff;
+}
+
+/* PLACEHOLDER */
+.login-box input::placeholder {
+  color: #999;
+}
+
+/* LOGIN BUTTON */
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* BUTTON HOVER */
+.login-box button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* BUTTON ACTIVE */
+.login-box button:active {
+  transform: translateY(0);
+}
+
+/* ERROR MESSAGE */
+#errorMsg {
+  display: block;
+  margin-top: 15px;
+  font-size: 13px;
+  color: var(--danger);
+  min-height: 18px;
+}
+
+/* FOOTER TEXT (OPTIONAL) */
+.login-footer {
+  margin-top: 25px;
+  font-size: 12px;
+  color: var(--text-light);
+  opacity: 0.8;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 420px) {
+  .login-box {
+    width: 90%;
+    padding: 35px 25px;
+  }
+
+  .login-box h2 {
+    font-size: 22px;
+  }
+}
+
+/* ACCESSIBILITY */
+.login-box input,
+.login-box button {
+  font-family: inherit;
+}
+
+/* REMOVE AUTOFILL BG (CHROME) */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/* END OF FILE */

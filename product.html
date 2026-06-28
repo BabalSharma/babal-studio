@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Services & Packages | Babaldeep Sharma</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Browse premium minimal design, editing, and web development services from BabalSharma Studio.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a class="logo-container" href="index.html" aria-label="Go to homepage">
+      <img src="images/logo.png" alt="Babaldeep Sharma Logo" width="42" height="42" decoding="async" />
+      <span data-site-text="brandName">BabalSharma.Studio</span>
+    </a>
+    <div class="nav-links" aria-label="Primary links">
+      <a href="index.html">Home</a>
+      <a href="product.html">Services</a>
+      <a href="blogs.html">Blog</a>
+      <a href="games.html">Games</a>
+      <a href="apps.html">Apps</a>
+      <a href="certificate.html">Certificates</a>
+      <a href="login.html">Client Login</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-utility-group"></div>
+      <div class="dropdown">
+        <button class="drop-btn" id="dropBtn" aria-label="Open Menu" aria-expanded="false" aria-controls="dropdownMenu">☰</button>
+        <div class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html">Home</a>
+        <a href="product.html">Services</a>
+        <a href="blogs.html">Blog</a>
+        <a href="games.html">Games</a>
+        <a href="apps.html">Apps</a>
+        <a href="certificate.html">Certificates</a>
+        <a href="login.html">Client Login</a>
+        <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero reveal">
+  <div class="eyebrow">Service Library</div>
+  <h1>Clean offers.<br><span class="text-accent">Clear pricing.</span></h1>
+  <p>Browse packages for design, editing, and web work with a smoother catalog experience, better layout spacing, and faster decision flow.</p>
+</section>
+
+<div class="filters glass-soft reveal">
+  <select id="categoryFilter" aria-label="Filter services by category">
+    <option value="all">All Categories</option>
+  </select>
+  <select id="sortPrice" aria-label="Sort services by price">
+    <option value="">Sort by Price</option>
+    <option value="low">Low → High</option>
+    <option value="high">High → Low</option>
+  </select>
+</div>
+
+<section class="services-section reveal">
+  <h2 class="section-title">Services & Packages</h2>
+  <p class="section-intro">The catalog loads from your Firebase collection and now presents each service in a more premium, readable card layout.</p>
+  <div class="grid" id="servicesGrid"></div>
+</section>
+
+<footer>
+  <p>© 2026 Babaldeep Sharma</p>
+  <div class="actions-row" style="margin-top:14px; justify-content:center;">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
+
+<script src="js/site-config.js"></script>
+<script src="js/script.js"></script>
+<script type="module" src="js/services.js"></script>
+</body>
+</html>

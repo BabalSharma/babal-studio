@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0d12">
+<meta name="description" content="Studio blog, case notes, and creative process updates from BabalSharma.Studio.">
+<title>Studio Blog | BabalSharma.Studio</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="blogs">
+<header>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a class="logo-container" href="index.html" aria-label="Go to homepage">
+      <img src="images/logo.png" alt="Babaldeep Sharma Logo" width="42" height="42" decoding="async" />
+      <span data-site-text="brandName">BabalSharma.Studio</span>
+    </a>
+    <div class="nav-links" aria-label="Primary links">
+      <a href="index.html">Home</a>
+      <a href="product.html">Services</a>
+      <a href="blogs.html">Blog</a>
+      <a href="games.html">Games</a>
+      <a href="apps.html">Apps</a>
+      <a href="certificate.html">Certificates</a>
+      <a href="login.html">Client Login</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-utility-group"></div>
+      <div class="dropdown">
+        <button class="drop-btn" id="dropBtn" aria-label="Open Menu" aria-expanded="false" aria-controls="dropdownMenu">☰</button>
+        <div class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html">Home</a>
+        <a href="product.html">Services</a>
+        <a href="blogs.html">Blog</a>
+        <a href="games.html">Games</a>
+        <a href="apps.html">Apps</a>
+        <a href="certificate.html">Certificates</a>
+        <a href="login.html">Client Login</a>
+        <a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero reveal">
+  <div class="eyebrow" data-page-text="heroEyebrow">Studio Blog</div>
+  <h1><span data-page-text="heroTitle">Articles with a</span><br><span class="text-accent" data-page-text="heroAccent">clean editorial rhythm.</span></h1>
+  <p data-page-text="heroDescription">Case notes, design process, website experiments, and studio updates presented in a premium reading layout.</p>
+</section>
+
+
+<div class="filters glass-soft reveal discover-controls">
+  <input type="search" id="discoverSearch" placeholder="Search article topic" aria-label="Search blog posts">
+  <select id="discoverFilter" aria-label="Filter article category">
+    <option value="all">All Topics</option>
+    <option value="branding">Branding</option>
+    <option value="web">Web</option>
+    <option value="growth">Growth</option>
+    <option value="systems">Systems</option>
+  </select>
+</div>
+
+<div data-dynamic-sections></div>
+
+<footer>
+  <p>© 2026 Babaldeep Sharma</p>
+  <div class="actions-row" style="margin-top:14px; justify-content:center;">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
+<script src="js/site-config.js"></script>
+<script src="js/script.js"></script>
+<script src="js/discovery.js"></script>
+</body>
+</html>
