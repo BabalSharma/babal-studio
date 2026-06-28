@@ -1,9 +1,0 @@
-.env
-*.env
-node_modules/
-dist/
-build/
-.DS_Store
-firebase-debug.log
-*-service-account*.json
-serviceAccount*.json

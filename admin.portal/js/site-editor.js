@@ -1,11 +1,11 @@
 import { auth } from './firebase.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
-const KEY = 'babalstudio-site-config-v4';
-const LEGACY_KEY = 'babalstudio-site-config-v3';
+const KEY = 'babalstudio-site-config-v5';
+const LEGACY_KEY = 'babalstudio-site-config-v4';
 
 const DEFAULTS = {
-  brandName: 'BabalSharma.Studio',
+  brandName: 'Babal Studio',
   accentColor: '#0071e3',
   accentStrong: '#0055b8',
   bgColor: '#f5f5f7',
@@ -13,37 +13,37 @@ const DEFAULTS = {
   glassLevel: 'medium',
   collections: {
     blogs: [
-      { category: 'Branding', title: 'How to make a one-person studio look trustworthy', text: 'Spacing, proof, offer clarity, and restraint matter more than flashy effects when trust is the goal.', meta1: '8 min read', meta2: 'Trust systems', ctaText: 'Read preview', image: '' },
-      { category: 'Web', title: 'Designing dark mode without killing readability', text: 'A practical breakdown of contrast, surface layering, motion restraint, and visual hierarchy for modern portfolios.', meta1: '6 min read', meta2: 'UI clarity', ctaText: 'Read preview', image: '' }
+      { category: 'Build Log', title: 'How I published my first GitHub Pages site', text: 'A simple note on turning a local HTML project into a live website without paid hosting.', meta1: '4 min read', meta2: 'GitHub Pages', ctaText: 'Read preview', image: '' },
+      { category: 'Fix Log', title: 'What I learned fixing AdSense verification', text: 'A real setup note about ads.txt, script placement, and waiting for Google to verify the live page.', meta1: '5 min read', meta2: 'AdSense', ctaText: 'Read preview', image: '' }
     ],
     apps: [
-      { label: 'Productivity', title: 'FocusFlow Student App', text: 'Study planning, streaks, focus sessions, and academic dashboard ideas for students.', status: 'Beta', platform: 'Android • Web', ctaText: 'Request access', ctaHref: 'login.html', image: '' },
-      { label: 'AI Tool', title: 'PromptForge', text: 'A cleaner launch card for AI tools, workflow products, and lightweight SaaS releases.', status: 'Waitlist', platform: 'Web App', ctaText: 'Join waitlist', ctaHref: 'login.html', image: '' }
+      { label: 'Student Tool', title: 'Study Planner Idea', text: 'A simple student dashboard idea for tasks, focus sessions, and weekly study tracking.', status: 'Idea', platform: 'Web', ctaText: 'Follow progress', ctaHref: 'blogs.html', image: '' },
+      { label: 'Website Tool', title: 'PostPilot Experiment', text: 'A small experiment for writing, scheduling, and publishing simple blog updates from an admin page.', status: 'Prototype', platform: 'Web', ctaText: 'See notes', ctaHref: 'blogs.html', image: '' }
     ],
     games: [
-      { label: 'Arcade', title: 'Nebula Drift', text: 'Fast release card for a cinematic arcade prototype with a cleaner rollout panel.', status: 'Demo live', value: 82, ctaText: 'Open builds', ctaHref: '#launch-cards', image: '' },
-      { label: 'Adventure', title: 'Temple Echo', text: 'Store-style teaser card for an exploration game with launch status and progress.', status: 'In progress', value: 64, ctaText: 'Track release', ctaHref: 'games.html', image: '' }
+      { label: 'Prototype', title: 'Scratch Warrior Game', text: 'A small learning project focused on movement, scoring, health, and simple game logic.', status: 'Learning build', value: 60, ctaText: 'Track progress', ctaHref: '#launch-cards', image: '' },
+      { label: 'Idea', title: 'Mini Web Game', text: 'A future browser game idea for practicing JavaScript, animation, and simple UI polish.', status: 'Planned', value: 25, ctaText: 'Follow updates', ctaHref: 'blogs.html', image: '' }
     ]
   },
   pages: {
     home: {
       file: 'index.html',
-      hero: { eyebrow: 'Minimal digital studio', title: 'Calm design.', accent: 'Sharper presence.', description: 'A quieter, more premium homepage for design, websites, apps, and interactive launches with lighter structure and better breathing room.' },
+      hero: { eyebrow: 'Simple websites for real people', title: 'Clear websites.', accent: 'Honest digital work.', description: 'I build simple websites, landing pages, and small digital pages for students, creators, shops, and local businesses.' },
       sections: []
     },
     blogs: {
       file: 'blogs.html',
-      hero: { eyebrow: 'Studio Blog', title: 'Articles with a', accent: 'clean editorial rhythm.', description: 'Case notes, design process, website experiments, and studio updates presented in a premium reading layout.' },
+      hero: { eyebrow: 'Build Log', title: 'Notes from', accent: 'building in public.', description: 'Short updates about websites, Linux setup, student projects, and what I learn while building.' },
       sections: []
     },
     apps: {
       file: 'apps.html',
-      hero: { eyebrow: 'App Distribution', title: 'Mobile-ready launch pages', accent: 'for products and tools.', description: 'Designed for SaaS, AI tools, student utilities, and mobile products that need a clear rollout page with strong visual trust.' },
+      hero: { eyebrow: 'App Experiments', title: 'Small tools', accent: 'built while learning.', description: 'A place for simple app ideas, prototypes, and student tools as they grow step by step.' },
       sections: []
     },
     games: {
       file: 'games.html',
-      hero: { eyebrow: 'Game Distribution', title: 'Launch pages for', accent: 'interactive releases.', description: 'Present game projects with platform readiness, release stages, store links, and update visibility in a more product-driven way.' },
+      hero: { eyebrow: 'Game Experiments', title: 'Small games', accent: 'and learning builds.', description: 'A simple page for game ideas, prototypes, progress updates, and future playable demos.' },
       sections: []
     }
   }
@@ -87,41 +87,41 @@ function saveState() {
 function seedDefaults() {
   const seeded = deepClone(DEFAULTS);
   seeded.pages.home.sections = [
-    normalizeSection({ id: 'home-features', type: 'features', eyebrow: 'What changed', title: 'A more minimal front page with lighter depth.', intro: 'Cleaner rhythm, softer glass, and stronger breathing room across desktop and mobile.', items: [
-      { label: 'Layout', title: 'Minimal homepage flow', text: 'Wider spacing, fewer interruptions, and calmer section rhythm for a stronger first impression.', ctaText: 'Explore', ctaHref: 'index.html' },
-      { label: 'Admin', title: 'Hidden visual CMS', text: 'Edit sections, blog posts, app cards, and game cards without touching the source code.', ctaText: 'Open admin', ctaHref: 'admin.portal/adminlogin.html' },
-      { label: 'Mobile', title: 'Better small-screen feel', text: 'More touch room, cleaner cards, and better readability on IIT mobile widths.', ctaText: 'See apps', ctaHref: 'apps.html' }
+    normalizeSection({ id: 'home-features', type: 'features', eyebrow: 'What changed', title: 'A simple front page with clear sections.', intro: 'The page explains what I build, how projects work, and how to contact me.', items: [
+      { label: 'Layout', title: 'Simple homepage flow', text: 'Clear headline, services, pricing, process, and contact section without extra confusion.', ctaText: 'Explore', ctaHref: 'index.html' },
+      { label: 'Admin', title: 'Editable website sections', text: 'The site has an admin area for managing sections, posts, and small project cards.', ctaText: 'Open admin', ctaHref: 'admin.portal/adminlogin.html' },
+      { label: 'Mobile', title: 'Mobile-first layout', text: 'Pages are designed to stay readable on phones, tablets, and small laptop screens.', ctaText: 'See apps', ctaHref: 'apps.html' }
     ]}),
-    normalizeSection({ id: 'home-stats', type: 'stats', eyebrow: 'Trust signals', title: 'Numbers make a solo studio feel real.', intro: 'Use simple proof blocks to reduce doubt and guide visitors toward action.', items: [
-      { value: '24h', label: 'Fast reply window', text: 'Keep response expectations clear.' },
-      { value: '4', label: 'Revenue paths', text: 'Services, apps, games, and content.' },
-      { value: '100%', label: 'Mobile-first polish', text: 'Cleaner spacing for small screens.' }
+    normalizeSection({ id: 'home-stats', type: 'stats', eyebrow: 'Trust signals', title: 'Simple signals before you message me.', intro: 'No fake claims. Just clear expectations and a simple working process.', items: [
+      { value: '24h', label: 'Reply window', text: 'I try to reply within one day when available.' },
+      { value: '3', label: 'Main services', text: 'Websites, portfolios, and landing pages.' },
+      { value: '1', label: 'Clear first version', text: 'You see a working draft before final polish.' }
     ]}),
-    normalizeSection({ id: 'home-pricing', type: 'pricing', eyebrow: 'Offer blocks', title: 'Package the work so buying feels easier.', intro: 'Pricing cards help visitors understand what you do, who it is for, and what to do next.', items: [
+    normalizeSection({ id: 'home-pricing', type: 'pricing', eyebrow: 'Offer blocks', title: 'Start small, then improve.', intro: 'These are starting points. Final price depends on pages, content, and deadline.', items: [
       { name: 'Starter', price: '₹999+', tag: 'Lead magnet', text: 'Fast entry package for small clients and first trust.', features: '1 focused task
 Quick delivery
 Simple revisions', ctaText: 'Enquire', ctaHref: 'order.html' },
       { name: 'Growth', price: '₹4,999+', tag: 'Most useful', text: 'Balanced service block for design + landing page work.', features: 'Clear scope
-Premium layout
+Clean layout
 CTA-focused structure', ctaText: 'Book now', ctaHref: 'order.html' },
       { name: 'Custom', price: 'Quote', tag: 'Higher value', text: 'For full web builds, app ideas, publishing support, and long-term work.', features: 'Discovery call
 Custom roadmap
 Priority handling', ctaText: 'Discuss project', ctaHref: 'index.html#contact' }
     ]}),
-    normalizeSection({ id: 'home-roadmap', type: 'roadmap', eyebrow: 'Buyer path', title: 'Show how a project moves from inquiry to delivery.', intro: 'A roadmap lowers hesitation and helps clients understand your working process.', items: [
-      { step: '01', title: 'Inquiry', text: 'Client sends brief, reference, or goal.' },
-      { step: '02', title: 'Offer', text: 'You suggest the right package and timeline.' },
-      { step: '03', title: 'Build', text: 'Design, review, refine, and prepare assets.' },
-      { step: '04', title: 'Launch', text: 'Deliver files, pages, and next-step support.' }
+    normalizeSection({ id: 'home-roadmap', type: 'roadmap', eyebrow: 'Buyer path', title: 'How a project moves from idea to launch.', intro: 'Simple steps make the work easier to understand before we begin.', items: [
+      { step: '01', title: 'Message', text: 'You send the website idea, reference, or goal.' },
+      { step: '02', title: 'Plan', text: 'I suggest a simple scope, price, and timeline.' },
+      { step: '03', title: 'Build', text: 'I create the first version and share progress.' },
+      { step: '04', title: 'Launch', text: 'We fix final details and publish the website.' }
     ]}),
-    normalizeSection({ id: 'home-cta', type: 'cta', eyebrow: 'Start faster', title: 'Use the hidden builder to shape the whole site.', intro: 'The homepage, blog, app, and game layouts can now be managed from one private editor.', primaryText: 'Open Services', primaryHref: 'product.html', secondaryText: 'Open Blog', secondaryHref: 'blogs.html' }),
-    normalizeSection({ id: 'home-contact', type: 'contact', eyebrow: 'Contact', title: 'Start with the fastest route.', intro: 'For design work, websites, and studio collaborations, use the cleanest channel for the job.', items: [
-      { label: 'Email', title: 'babalsharma.studio@gmail.com', text: 'Best for briefs, attachments, references, and detailed project requests.', ctaText: 'Send Email', ctaHref: 'mailto:babalsharma.studio@gmail.com', icon: 'mail' },
-      { label: 'WhatsApp', title: 'Quick project chat', text: 'Useful for short discussions, availability, and fast pricing questions.', ctaText: 'Open WhatsApp', ctaHref: 'https://wa.me/91XXXXXXXXXX', icon: 'whatsapp' }
+    normalizeSection({ id: 'home-cta', type: 'cta', eyebrow: 'Start faster', title: 'Need a simple website?', intro: 'Send a short brief. I will reply with a clear plan instead of confusing promises.', primaryText: 'Open Services', primaryHref: 'product.html', secondaryText: 'Open Blog', secondaryHref: 'blogs.html' }),
+    normalizeSection({ id: 'home-contact', type: 'contact', eyebrow: 'Contact', title: 'Start with a short message.', intro: 'Share what you need, your deadline, and any example links you like.', items: [
+      { label: 'Email', title: 'babalsharma.studio@gmail.com', text: 'Best for proper briefs, attachments, references, and project details.', ctaText: 'Send Email', ctaHref: 'mailto:babalsharma.studio@gmail.com', icon: 'mail' },
+      { label: 'Instagram', title: '@babalsharma.studio', text: 'Good for quick updates, screenshots, and simple project conversations.', ctaText: 'Open Instagram', ctaHref: 'https://www.instagram.com/babalsharma.studio/', icon: 'instagram' }
     ]})
   ];
-  seeded.pages.blogs.sections = [normalizeSection({ id: 'blog-cta', type: 'cta', eyebrow: 'Editorial system', title: 'New blog posts can now be created from admin.', intro: 'Use the content manager below the page builder to add cards with cover images and meta labels.', primaryText: 'Browse services', primaryHref: 'product.html', secondaryText: 'Go home', secondaryHref: 'index.html' }), normalizeSection({ id: 'blog-gallery', type: 'gallery', eyebrow: 'Visual editorials', title: 'Mix writing with covers, previews, and case snapshots.', intro: 'A gallery block helps make the blog page feel more alive and premium.', items: [ { image: 'images/project1.jpg', title: 'Case preview', text: 'Landing page study' }, { image: 'images/project2.jpg', title: 'System notes', text: 'Brand structure' }, { image: 'images/project3.jpg', title: 'UI audit', text: 'Mobile polish' } ] })];
-  seeded.pages.apps.sections = [normalizeSection({ id: 'apps-showcase', type: 'showcase', eyebrow: 'App Launches', title: 'Product rollout cards with image support.', intro: 'Upload product cover images and manage app release cards from one hidden admin workspace.', badge: 'CMS ready', chips: ['Image upload', 'Card creator', 'Mobile layout'], primaryText: 'Open blog', primaryHref: 'blogs.html', secondaryText: 'Open games', secondaryHref: 'games.html', visual: 'phone' }), normalizeSection({ id: 'apps-download', type: 'download', eyebrow: 'Distribution', title: 'Place platform links in one clean block.', intro: 'Use download sections for app stores, APK links, docs, waitlists, and changelogs.', items: [ { platform: 'Google Play', title: 'Primary store listing', text: 'Best for social proof, reviews, and broad access.', ctaText: 'Add link', ctaHref: '#' }, { platform: 'APK / Beta', title: 'Direct tester rollout', text: 'Useful for fast private testing before store launch.', ctaText: 'Set link', ctaHref: '#' }, { platform: 'Docs', title: 'Guide or landing page', text: 'Explain features, onboarding, and pricing clearly.', ctaText: 'Open docs', ctaHref: '#' } ] })];
+  seeded.pages.blogs.sections = [normalizeSection({ id: 'blog-cta', type: 'cta', eyebrow: 'Editorial system', title: 'I write short notes from real setup work.', intro: 'These posts are simple build logs, fixes, and lessons from making websites and Linux setups.', primaryText: 'Browse services', primaryHref: 'product.html', secondaryText: 'Go home', secondaryHref: 'index.html' }), normalizeSection({ id: 'blog-gallery', type: 'gallery', eyebrow: 'Visual editorials', title: 'Small case notes and screenshots.', intro: 'Use this section for real screenshots, before-after changes, and project notes.', items: [ { image: 'images/project1.jpg', title: 'Case preview', text: 'Landing page study' }, { image: 'images/project2.jpg', title: 'System notes', text: 'Brand structure' }, { image: 'images/project3.jpg', title: 'UI audit', text: 'Mobile polish' } ] })];
+  seeded.pages.apps.sections = [normalizeSection({ id: 'apps-showcase', type: 'showcase', eyebrow: 'App Launches', title: 'Small tool cards and experiments.', intro: 'Use this page to show simple tools, prototypes, and ideas without pretending they are finished.', badge: 'CMS ready', chips: ['Image upload', 'Card creator', 'Mobile layout'], primaryText: 'Open blog', primaryHref: 'blogs.html', secondaryText: 'Open games', secondaryHref: 'games.html', visual: 'phone' }), normalizeSection({ id: 'apps-download', type: 'download', eyebrow: 'Distribution', title: 'Keep useful links in one place.', intro: 'When a tool is ready, add the demo, docs, or download link here.', items: [ { platform: 'Google Play', title: 'Future store listing', text: 'Add this only when the app is ready for public release.', ctaText: 'Add link', ctaHref: '#' }, { platform: 'APK / Beta', title: 'Direct tester rollout', text: 'Useful for fast private testing before store launch.', ctaText: 'Set link', ctaHref: '#' }, { platform: 'Docs', title: 'Guide or landing page', text: 'Explain features, onboarding, and pricing clearly.', ctaText: 'Open docs', ctaHref: '#' } ] })];
   seeded.pages.games.sections = [normalizeSection({ id: 'games-showcase', type: 'showcase', eyebrow: 'Game Launches', title: 'Interactive release cards with progress status.', intro: 'Add game tiles, artwork, links, and readiness values from admin without touching the code.', badge: 'Launch system', chips: ['Image upload', 'Progress status', 'CTA links'], primaryText: 'See builds', primaryHref: '#launch-cards', secondaryText: 'Open apps', secondaryHref: 'apps.html', visual: 'orbit' }), normalizeSection({ id: 'games-roadmap', type: 'roadmap', eyebrow: 'Release roadmap', title: 'Show players what comes next.', intro: 'Roadmaps help ongoing projects feel active and serious.', items: [ { step: 'Q1', title: 'Prototype', text: 'Core mechanic and visual direction.' }, { step: 'Q2', title: 'Demo', text: 'Public test build and feedback pass.' }, { step: 'Q3', title: 'Store prep', text: 'Artwork, trailer, screenshots, and launch page.' }, { step: 'Q4', title: 'Release', text: 'Version 1.0 with update plan.' } ] })];
   return seeded;
 }
